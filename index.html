@@ -104,7 +104,6 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 .insight-body h3{font-size:1.15rem;color:var(--primary);margin-bottom:.8rem;font-family:'Inter',sans-serif;font-weight:600}
 .insight-body p{color:var(--text-light);font-size:.9rem;line-height:1.6}
 
-/* Modal Styles */
 .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(15,23,42,.7);backdrop-filter:blur(8px);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .3s ease;padding:2rem}
 .modal-overlay.active{opacity:1;visibility:visible}
 .modal-content{background:var(--white);border-radius:20px;max-width:700px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(30px);transition:transform .3s ease;box-shadow:0 25px 50px -12px rgba(0,0,0,.25)}
@@ -121,11 +120,17 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 .modal-close{position:absolute;top:1.5rem;right:1.5rem;width:40px;height:40px;background:var(--light);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--text);transition:var(--transition)}
 .modal-close:hover{background:var(--primary);color:var(--white);transform:rotate(90deg)}
 
+/* ABOUT US - KOTAK FOTO */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
 .about-image{position:relative}
 .about-image-main{width:100%;height:500px;background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:20px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .about-image-main::before{content:'';position:absolute;top:20px;left:20px;right:-20px;bottom:-20px;border:2px solid var(--accent);border-radius:20px;z-index:-1}
-.about-image-main i{font-size:6rem;color:rgba(255,255,255,.1)}
+.about-image-main img{width:100%;height:100%;object-fit:cover;border-radius:20px;display:block}
+.about-image-main .photo-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;color:rgba(255,255,255,.9);text-align:center;padding:2rem}
+.about-image-main .photo-placeholder i{font-size:4rem;margin-bottom:1rem;color:rgba(255,255,255,.5)}
+.about-image-main .photo-placeholder p{font-size:1rem;opacity:.8}
+.about-image-main .photo-upload-hint{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.9);color:var(--primary);padding:.5rem 1rem;border-radius:8px;font-size:.85rem;font-weight:600;opacity:0;transition:var(--transition)}
+.about-image-main:hover .photo-upload-hint{opacity:1}
 .about-stats{position:absolute;bottom:-30px;right:-20px;background:var(--white);padding:1.5rem 2rem;border-radius:16px;box-shadow:var(--shadow-lg);border:1px solid var(--border)}
 .about-stats-number{font-size:2.5rem;font-weight:800;color:var(--accent);line-height:1}
 .about-stats-label{font-size:.85rem;color:var(--text-light);margin-top:.3rem}
@@ -166,13 +171,15 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 .resources{background:var(--light)}
 .resources-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
 .downloads-list{display:flex;flex-direction:column;gap:1rem}
-.download-item{display:flex;align-items:center;gap:1rem;padding:1.2rem 1.5rem;background:var(--white);border-radius:12px;border:1px solid var(--border);transition:var(--transition);cursor:pointer}
-.download-item:hover{border-color:var(--accent);transform:translateX(5px)}
-.download-icon{width:48px;height:48px;background:rgba(30,58,95,.08);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.2rem}
+.download-item{display:flex;align-items:center;gap:1rem;padding:1.2rem 1.5rem;background:var(--white);border-radius:12px;border:1px solid var(--border);transition:var(--transition);cursor:pointer;text-decoration:none;color:inherit}
+.download-item:hover{border-color:var(--accent);transform:translateX(5px);box-shadow:var(--shadow)}
+.download-icon{width:48px;height:48px;background:rgba(30,58,95,.08);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.2rem;flex-shrink:0}
+.download-info{flex:1}
 .download-info h4{font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;color:var(--primary)}
 .download-info p{font-size:.85rem;color:var(--text-light)}
-.download-arrow{margin-left:auto;color:var(--text-light);transition:var(--transition)}
+.download-arrow{margin-left:auto;color:var(--text-light);transition:var(--transition);font-size:1.2rem}
 .download-item:hover .download-arrow{color:var(--accent);transform:translateX(3px)}
+.download-item .file-size{font-size:.75rem;color:var(--text-light);margin-top:.2rem}
 
 .lead-form{background:var(--white);padding:2.5rem;border-radius:20px;box-shadow:var(--shadow);border:1px solid var(--border)}
 .lead-form h3{font-size:1.4rem;color:var(--primary);margin-bottom:.5rem}
@@ -184,14 +191,16 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .btn-submit{width:100%;padding:1rem;background:var(--primary);color:var(--white);border:none;border-radius:10px;font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:var(--transition)}
 .btn-submit:hover{background:var(--primary-light);transform:translateY(-2px);box-shadow:0 10px 20px rgba(30,58,95,.2)}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
 
+/* CONTACT - LINK AKTIF */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
 .contact-info h2{font-size:2.5rem;color:var(--primary);margin-bottom:1rem}
 .contact-info>p{color:var(--text-light);margin-bottom:2rem;font-size:1.05rem}
 .contact-methods{display:flex;flex-direction:column;gap:1.2rem;margin-bottom:2rem}
-.contact-method{display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--light);border-radius:12px;transition:var(--transition)}
-.contact-method:hover{background:rgba(30,58,95,.08)}
-.contact-method-icon{width:48px;height:48px;background:var(--primary);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.2rem}
+.contact-method{display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--light);border-radius:12px;transition:var(--transition);text-decoration:none;color:inherit}
+.contact-method:hover{background:rgba(30,58,95,.08);transform:translateX(5px)}
+.contact-method-icon{width:48px;height:48px;background:var(--primary);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.2rem;flex-shrink:0}
 .contact-method-info h4{font-family:'Inter',sans-serif;font-size:.9rem;font-weight:600;color:var(--primary)}
 .contact-method-info p{font-size:.9rem;color:var(--text-light)}
 .contact-closing{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);color:var(--white);padding:1.5rem;border-radius:16px;text-align:center}
@@ -212,13 +221,19 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 .footer-col h4{font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;margin-bottom:1.5rem;color:var(--white)}
 .footer-col ul{list-style:none}
 .footer-col li{margin-bottom:.8rem}
-.footer-col a{color:rgba(255,255,255,.7);font-size:.95rem;transition:var(--transition)}
+.footer-col a{color:rgba(255,255,255,.7);font-size:.95rem;transition:var(--transition);text-decoration:none}
 .footer-col a:hover{color:var(--accent)}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center}
 .footer-bottom p{color:rgba(255,255,255,.5);font-size:.9rem}
 .footer-social{display:flex;gap:1rem}
-.footer-social a{width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);transition:var(--transition)}
+.footer-social a{width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);transition:var(--transition);text-decoration:none}
 .footer-social a:hover{background:var(--accent);color:var(--dark);transform:translateY(-3px)}
+
+/* FORM STATUS MESSAGE */
+.form-status{margin-top:1rem;padding:1rem;border-radius:10px;font-size:.95rem;font-weight:500;display:none}
+.form-status.success{background:rgba(34,197,94,.1);color:#15803d;border:1px solid rgba(34,197,94,.2)}
+.form-status.error{background:rgba(239,68,68,.1);color:#b91c1c;border:1px solid rgba(239,68,68,.2)}
+.form-status.show{display:block}
 
 @media(max-width:1024px){.hero-container{grid-template-columns:1fr;text-align:center}.hero-content p{margin-left:auto;margin-right:auto}.hero-buttons{justify-content:center}.hero-visual{display:none}.solutions-grid,.why-grid,.impact-grid,.insights-grid,.services-wrapper{grid-template-columns:1fr}.about-grid,.resources-grid,.contact-grid{grid-template-columns:1fr}.case-studies-grid{grid-template-columns:1fr}.about-image{order:-1;margin-bottom:2rem}.about-stats{right:20px}}
 @media(max-width:768px){.nav-links{display:none}.mobile-toggle{display:block}.hero-content h1{font-size:2.2rem}.section-header h2,.about-content h2,.contact-info h2{font-size:1.8rem}.cta-content h2{font-size:2rem}.footer-grid{grid-template-columns:1fr;text-align:center}.footer-brand .logo{margin-left:auto;margin-right:auto}.footer-social{justify-content:center}.footer-bottom{flex-direction:column;gap:1rem;text-align:center}}
@@ -226,6 +241,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 .fade-in{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}.fade-in.visible{opacity:1;transform:translateY(0)}
 ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--light)}::-webkit-scrollbar-thumb{background:var(--primary-light);border-radius:4px}::-webkit-scrollbar-thumb:hover{background:var(--primary)}
 </style>
+<base target="_blank">
 </head>
 <body>
 <nav class="navbar" id="navbar">
@@ -250,7 +266,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <h1>Business Improvement Through <span>HR, Legal & Governance</span> Excellence</h1>
 <p>Helping organizations strengthen performance, reduce risk, and achieve sustainable growth through practical consulting and implementation support.</p>
 <div class="hero-buttons">
-<a href="#contact" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Schedule Consultation</a>
+<a href="https://wa.me/628813967332?text=Hi%20Forisa%20Impact!%20Saya%20ingin%20berdiskusi%20tentang%20layanan%20konsultasi." class="btn btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> Konsultasi via WhatsApp</a>
 <a href="#resources" class="btn btn-outline"><i class="fas fa-download"></i> Download Company Profile</a>
 </div>
 </div>
@@ -263,7 +279,6 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 </div>
 </div>
 </section>
-
 <section class="section challenges" id="challenges">
 <div class="container">
 <div class="section-header fade-in">
@@ -307,6 +322,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 </div>
 </div>
 </section>
+
 <section class="section why-us" id="why-us">
 <div class="container">
 <div class="section-header fade-in">
@@ -378,7 +394,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 </div>
 </div>
 </section>
-<!-- MODAL 1: Why Busy Teams Often Miss Their Targets -->
+
 <div class="modal-overlay" id="modal1" onclick="closeModal(event)">
 <div class="modal-content" onclick="event.stopPropagation()">
 <div class="modal-header">
@@ -392,19 +408,13 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <h3>The Activity Trap</h3>
 <p>When teams confuse motion with progress, they fall into the activity trap. Every email sent, every meeting attended, and every report generated creates an illusion of productivity. But without clear alignment to strategic priorities, this busyness is just noise.</p>
 <h3>Root Causes</h3>
-<ul>
-<li><strong>Unclear Priorities:</strong> When everything is important, nothing is important.</li>
-<li><strong>Weak Accountability:</strong> Without ownership, tasks get started but rarely finished.</li>
-<li><strong>Measurement Mismatch:</strong> Tracking hours worked instead of results delivered.</li>
-<li><strong>Interruption Culture:</strong> Constant context switching destroys deep work.</li>
-</ul>
+<ul><li><strong>Unclear Priorities:</strong> When everything is important, nothing is important.</li><li><strong>Weak Accountability:</strong> Without ownership, tasks get started but rarely finished.</li><li><strong>Measurement Mismatch:</strong> Tracking hours worked instead of results delivered.</li><li><strong>Interruption Culture:</strong> Constant context switching destroys deep work.</li></ul>
 <h3>The Solution</h3>
 <p>Organizations need to shift from measuring activity to measuring outcomes. This requires clear OKRs, protected focus time, and a culture that rewards results over presence.</p>
 </div>
 </div>
 </div>
 
-<!-- MODAL 2: Hidden Costs of Poor HR Governance -->
 <div class="modal-overlay" id="modal2" onclick="closeModal(event)">
 <div class="modal-content" onclick="event.stopPropagation()">
 <div class="modal-header">
@@ -416,19 +426,13 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <div class="modal-body">
 <p>Poor HR governance does not announce itself with dramatic failures. Instead, it silently drains resources through turnover, disengagement, compliance violations, and missed opportunities. The true cost is often invisible on balance sheets but devastating to organizational health.</p>
 <h3>The Hidden Cost Categories</h3>
-<ul>
-<li><strong>Turnover Costs:</strong> Replacing an employee costs 50-200% of their annual salary.</li>
-<li><strong>Productivity Loss:</strong> Disengaged employees cost organizations 34% of their salary in lost productivity.</li>
-<li><strong>Compliance Penalties:</strong> Labor law violations can result in fines, lawsuits, and reputational damage.</li>
-<li><strong>Talent Acquisition:</strong> Weak employer brand makes recruitment exponentially more expensive.</li>
-</ul>
+<ul><li><strong>Turnover Costs:</strong> Replacing an employee costs 50-200% of their annual salary.</li><li><strong>Productivity Loss:</strong> Disengaged employees cost organizations 34% of their salary in lost productivity.</li><li><strong>Compliance Penalties:</strong> Labor law violations can result in fines, lawsuits, and reputational damage.</li><li><strong>Talent Acquisition:</strong> Weak employer brand makes recruitment exponentially more expensive.</li></ul>
 <h3>Prevention Over Cure</h3>
 <p>Investing in proper HR governance — clear policies, fair processes, and regular audits — pays dividends far exceeding the cost. Prevention is not just cheaper; it builds the foundation for sustainable growth.</p>
 </div>
 </div>
 </div>
 
-<!-- MODAL 3: Scaling Without Structure -->
 <div class="modal-overlay" id="modal3" onclick="closeModal(event)">
 <div class="modal-content" onclick="event.stopPropagation()">
 <div class="modal-header">
@@ -440,19 +444,13 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <div class="modal-body">
 <p>Growth is exciting. Revenue increases, teams expand, and market share grows. But without the organizational structure to support that growth, the very success that created momentum becomes the cause of breakdown.</p>
 <h3>Warning Signs</h3>
-<ul>
-<li>Decision-making bottlenecks at the founder/CEO level</li>
-<li>Departments operating in silos with conflicting priorities</li>
-<li>Inconsistent quality as the team grows</li>
-<li>Key employees burning out from carrying too much</li>
-</ul>
+<ul><li>Decision-making bottlenecks at the founder/CEO level</li><li>Departments operating in silos with conflicting priorities</li><li>Inconsistent quality as the team grows</li><li>Key employees burning out from carrying too much</li></ul>
 <h3>Building Structure Before You Need It</h3>
 <p>The best time to build organizational structure is before you desperately need it. This means defining roles, establishing reporting lines, and creating processes that can scale — even when the team is still small enough to manage informally.</p>
 </div>
 </div>
 </div>
 
-<!-- MODAL 4: SOP Without Ownership -->
 <div class="modal-overlay" id="modal4" onclick="closeModal(event)">
 <div class="modal-content" onclick="event.stopPropagation()">
 <div class="modal-header">
@@ -464,19 +462,13 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <div class="modal-body">
 <p>Standard Operating Procedures are only valuable when they are followed. Too many organizations invest heavily in creating beautiful SOP documents that sit in shared drives, never referenced and rarely updated. The missing ingredient is ownership.</p>
 <h3>Why SOPs Fail</h3>
-<ul>
-<li>No one is accountable for maintaining or enforcing them</li>
-<li>Employees were not involved in creating them, so they feel imposed</li>
-<li>Procedures are too complex or disconnected from reality</li>
-<li>No consequences for non-compliance</li>
-</ul>
+<ul><li>No one is accountable for maintaining or enforcing them</li><li>Employees were not involved in creating them, so they feel imposed</li><li>Procedures are too complex or disconnected from reality</li><li>No consequences for non-compliance</li></ul>
 <h3>Making SOPs Work</h3>
 <p>Effective SOPs are co-created with the people who use them, owned by process champions, reviewed regularly, and tied to performance metrics. Documentation without ownership is just paper.</p>
 </div>
 </div>
 </div>
 
-<!-- MODAL 5: The Cost of Weak Accountability -->
 <div class="modal-overlay" id="modal5" onclick="closeModal(event)">
 <div class="modal-content" onclick="event.stopPropagation()">
 <div class="modal-header">
@@ -488,19 +480,13 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <div class="modal-body">
 <p>Accountability is the invisible infrastructure of high-performing organizations. When it is weak, everything else suffers — strategy, execution, culture, and results. The cost is not just financial; it erodes trust and engagement at every level.</p>
 <h3>Symptoms of Weak Accountability</h3>
-<ul>
-<li>Deadlines consistently missed without consequences</li>
-<li>Blame-shifting and finger-pointing in meetings</li>
-<li>Same problems recurring month after month</li>
-<li>High performers leaving because they are tired of carrying others</li>
-</ul>
+<ul><li>Deadlines consistently missed without consequences</li><li>Blame-shifting and finger-pointing in meetings</li><li>Same problems recurring month after month</li><li>High performers leaving because they are tired of carrying others</li></ul>
 <h3>Building Accountability Culture</h3>
 <p>Accountability starts with clarity — clear expectations, clear metrics, and clear consequences. But it thrives on trust. Leaders must model accountability before they can demand it from their teams.</p>
 </div>
 </div>
 </div>
 
-<!-- MODAL 6: Leadership Blind Spots -->
 <div class="modal-overlay" id="modal6" onclick="closeModal(event)">
 <div class="modal-content" onclick="event.stopPropagation()">
 <div class="modal-header">
@@ -512,28 +498,33 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <div class="modal-body">
 <p>Every leader has blind spots — cognitive biases and perceptual gaps that prevent them from seeing reality clearly. The most dangerous blind spots are the ones we do not know we have. They silently undermine decision-making and organizational health.</p>
 <h3>Common Leadership Blind Spots</h3>
-<ul>
-<li><strong>Confirmation Bias:</strong> Only seeing data that supports existing beliefs</li>
-<li><strong>Proximity Bias:</strong> Favoring employees who are physically closest</li>
-<li><strong>Recency Bias:</strong> Overweighting recent events in performance evaluations</li>
-<li><strong>Overconfidence:</strong> Believing you know more than you actually do</li>
-</ul>
+<ul><li><strong>Confirmation Bias:</strong> Only seeing data that supports existing beliefs</li><li><strong>Proximity Bias:</strong> Favoring employees who are physically closest</li><li><strong>Recency Bias:</strong> Overweighting recent events in performance evaluations</li><li><strong>Overconfidence:</strong> Believing you know more than you actually do</li></ul>
 <h3>Illuminating the Blind Spots</h3>
 <p>The antidote to blind spots is structured feedback — 360-degree reviews, external audits, and creating psychological safety for honest upward communication. Great leaders actively seek what they cannot see.</p>
 </div>
 </div>
 </div>
+<!-- ABOUT US - KOTAK FOTO -->
 <section class="section" id="about">
 <div class="container">
 <div class="about-grid">
 <div class="about-image fade-in">
-<div class="about-image-main"><i class="fas fa-user-tie"></i></div>
+<div class="about-image-main">
+<!-- GANTI src dengan path foto Anda -->
+<img src="images/tim-forisa.jpg" alt="Tim Forisa Impact" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<!-- Placeholder jika foto belum ada -->
+<div class="photo-placeholder" style="display:none;">
+<i class="fas fa-camera"></i>
+<p><strong>Foto Tim</strong><br>Unggah foto ke folder <code>images/</code> dengan nama <code>tim-forisa.jpg</code></p>
+</div>
+<div class="photo-upload-hint">Ganti foto di folder images/</div>
+</div>
 <div class="about-stats"><div class="about-stats-number">12+</div><div class="about-stats-label">Years Experience</div></div>
 </div>
 <div class="about-content fade-in">
 <span class="tag">About Us</span>
 <h2>Who We Are</h2>
-<p> Forisa Abadijaya Sejahtera with the name of brand Forisa Impact  founded on October 28, 2022, with a simple belief: sustainable growth happens when people, systems, and purpose work together.</p>
+<p>Forisa Abadijaya Sejahtera with the name of brand Forisa Impact founded on October 28, 2022, with a simple belief: sustainable growth happens when people, systems, and purpose work together.</p>
 <p class="mt-4">The name Forisa comes from <b>"For Isa"</b> — a reminder that every work should be carried out with integrity, excellence, and a higher purpose. Abadijaya Sejahtera reflects our aspiration to build lasting value, sustainable growth, and shared prosperity.</p>
 <p class="mt-4">What started as a conventional consulting practice has evolved into a strategic advisory partner specializing in Human Resources, Legal, Governance, Risk, and Compliance (GRC). Through real-world experience across organizational leadership, we have learned that lasting business success requires more than talent—it requires strong systems, accountable leadership, and disciplined execution.</p>
 <p class="mt-4">Today, Forisa Abadijaya Sejahtera (Forisa Impact) partners with organizations to strengthen people, improve governance, manage risks, and build sustainable foundations for growth.</p>
@@ -626,6 +617,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 </div>
 </div>
 </section>
+<!-- RESOURCES - DOWNLOAD BERKAS AKTIF -->
 <section class="section resources" id="resources">
 <div class="container">
 <div class="section-header fade-in">
@@ -635,33 +627,107 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 </div>
 <div class="resources-grid">
 <div class="downloads-list fade-in">
-<div class="download-item"><div class="download-icon"><i class="fas fa-building"></i></div><div class="download-info"><h4>Company Profile</h4><p>Complete overview of Forisa Impact services and approach.</p></div><i class="fas fa-arrow-right download-arrow"></i></div>
-<div class="download-item"><div class="download-icon"><i class="fas fa-heartbeat"></i></div><div class="download-info"><h4>HR Health Check Checklist</h4><p>Self-assessment tool for your HR function.</p></div><i class="fas fa-arrow-right download-arrow"></i></div>
-<div class="download-item"><div class="download-icon"><i class="fas fa-clipboard-check"></i></div><div class="download-info"><h4>Governance Assessment Checklist</h4><p>Evaluate your governance maturity level.</p></div><i class="fas fa-arrow-right download-arrow"></i></div>
-<div class="download-item"><div class="download-icon"><i class="fas fa-file-shield"></i></div><div class="download-info"><h4>Compliance Readiness Checklist</h4><p>Ensure your organization meets regulatory requirements.</p></div><i class="fas fa-arrow-right download-arrow"></i></div>
-<div class="download-item"><div class="download-icon"><i class="fas fa-file-alt"></i></div><div class="download-info"><h4>Business Improvement Whitepaper</h4><p>Strategic insights on organizational transformation.</p></div><i class="fas fa-arrow-right download-arrow"></i></div>
-<div class="download-item"><div class="download-icon"><i class="fas fa-cogs"></i></div><div class="download-info"><h4>Operational Excellence Guide</h4><p>Framework for achieving operational consistency.</p></div><i class="fas fa-arrow-right download-arrow"></i></div>
+<a href="downloads/company-profile.pdf" class="download-item" download="Forisa-Impact-Company-Profile.pdf">
+<div class="download-icon"><i class="fas fa-building"></i></div>
+<div class="download-info">
+<h4>Company Profile</h4>
+<p>Complete overview of Forisa Impact services and approach.</p>
+<div class="file-size">PDF • 2.4 MB</div>
 </div>
+<i class="fas fa-download download-arrow"></i>
+</a>
+<a href="downloads/hr-health-check.pdf" class="download-item" download="HR-Health-Check-Forisa.pdf">
+<div class="download-icon"><i class="fas fa-heartbeat"></i></div>
+<div class="download-info">
+<h4>HR Health Check Checklist</h4>
+<p>Self-assessment tool for your HR function.</p>
+<div class="file-size">PDF • 1.1 MB</div>
+</div>
+<i class="fas fa-download download-arrow"></i>
+</a>
+<a href="downloads/governance-assessment.pdf" class="download-item" download="Governance-Assessment-Forisa.pdf">
+<div class="download-icon"><i class="fas fa-clipboard-check"></i></div>
+<div class="download-info">
+<h4>Governance Assessment Checklist</h4>
+<p>Evaluate your governance maturity level.</p>
+<div class="file-size">PDF • 890 KB</div>
+</div>
+<i class="fas fa-download download-arrow"></i>
+</a>
+<a href="downloads/compliance-readiness.pdf" class="download-item" download="Compliance-Readiness-Forisa.pdf">
+<div class="download-icon"><i class="fas fa-file-shield"></i></div>
+<div class="download-info">
+<h4>Compliance Readiness Checklist</h4>
+<p>Ensure your organization meets regulatory requirements.</p>
+<div class="file-size">PDF • 1.5 MB</div>
+</div>
+<i class="fas fa-download download-arrow"></i>
+</a>
+<a href="downloads/business-improvement-whitepaper.pdf" class="download-item" download="Business-Improvement-Whitepaper.pdf">
+<div class="download-icon"><i class="fas fa-file-alt"></i></div>
+<div class="download-info">
+<h4>Business Improvement Whitepaper</h4>
+<p>Strategic insights on organizational transformation.</p>
+<div class="file-size">PDF • 3.2 MB</div>
+</div>
+<i class="fas fa-download download-arrow"></i>
+</a>
+<a href="downloads/operational-excellence-guide.pdf" class="download-item" download="Operational-Excellence-Guide.pdf">
+<div class="download-icon"><i class="fas fa-cogs"></i></div>
+<div class="download-info">
+<h4>Operational Excellence Guide</h4>
+<p>Framework for achieving operational consistency.</p>
+<div class="file-size">PDF • 2.8 MB</div>
+</div>
+<i class="fas fa-download download-arrow"></i>
+</a>
+</div>
+
+<!-- FORM LANGSUNG TERKIRIM KE EMAIL -->
 <div class="lead-form fade-in">
 <h3>Download Resources</h3>
 <p>Fill in your details to access our free resources.</p>
-<form>
+<!-- 
+  CARA SETUP FORM INI:
+  1. Daftar di https://formspree.io (GRATIS 50 submit/bulan)
+  2. Buat form baru, copy FORM_ID (contoh: xnqkvnvp)
+  3. Ganti action di bawah: https://formspree.io/f/YOUR_FORM_ID
+  4. Atur email tujuan di dashboard Formspree
+  5. Selesai! Form akan terkirim ke email Anda
+-->
+<form id="resourceForm" action="https://formspree.io/f/xojzplgn" method="POST">
+<input type="hidden" name="_subject" value="[Forisa Impact] Permintaan Download Resources">
+<input type="hidden" name="_replyto" value="info.ptfias@gmail.com">
+<input type="hidden" name="_next" value="https://forisaabadijayasejahtera.github.io/ForisaAbadijayaSejahtera/">
+
 <div class="form-row">
-<div class="form-group"><label>Name</label><input type="text" placeholder="Your full name" required></div>
-<div class="form-group"><label>Company</label><input type="text" placeholder="Company name" required></div>
+<div class="form-group"><label>Name *</label><input type="text" name="name" placeholder="Your full name" required></div>
+<div class="form-group"><label>Company *</label><input type="text" name="company" placeholder="Company name" required></div>
 </div>
 <div class="form-row">
-<div class="form-group"><label>Position</label><input type="text" placeholder="Your position" required></div>
-<div class="form-group"><label>Phone</label><input type="tel" placeholder="Phone number" required></div>
+<div class="form-group"><label>Position *</label><input type="text" name="position" placeholder="Your position" required></div>
+<div class="form-group"><label>Phone *</label><input type="tel" name="phone" placeholder="Phone number" required></div>
 </div>
-<div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com" required></div>
-<button type="submit" class="btn-submit">Get Access to Resources</button>
+<div class="form-group"><label>Email *</label><input type="email" name="email" placeholder="your@email.com" required></div>
+<div class="form-group"><label>Resource yang diminati</label>
+<select name="resource_interest">
+<option value="all">Semua Resources</option>
+<option value="company-profile">Company Profile</option>
+<option value="hr-checklist">HR Health Check</option>
+<option value="governance">Governance Assessment</option>
+<option value="compliance">Compliance Readiness</option>
+<option value="whitepaper">Business Whitepaper</option>
+<option value="operational">Operational Excellence</option>
+</select>
+</div>
+<button type="submit" class="btn-submit" id="submitBtn">Get Access to Resources</button>
+<div class="form-status" id="formStatus"></div>
 </form>
 </div>
 </div>
 </div>
 </section>
-
+<!-- CONTACT - LINK AKTIF WA, EMAIL, LINKEDIN -->
 <section class="section" id="contact">
 <div class="container">
 <div class="contact-grid">
@@ -670,28 +736,69 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <h2>Let's Start the Conversation</h2>
 <p>Whether you are dealing with workforce issues, compliance concerns, governance challenges, or organizational growth, we are ready to help.</p>
 <div class="contact-methods">
-<div class="contact-method"><div class="contact-method-icon"><i class="fab fa-whatsapp"></i></div><div class="contact-method-info"><h4>WhatsApp</h4><p>+62 881-3967-332</p></div></div>
-<div class="contact-method"><div class="contact-method-icon"><i class="fas fa-envelope"></i></div><div class="contact-method-info"><h4>Email</h4><p>info.forisaimpact@gmail.com</p></div></div>
-<div class="contact-method"><div class="contact-method-icon"><i class="fab fa-linkedin"></i></div><div class="contact-method-info"><h4>LinkedIn</h4><p>Forisa Impact</p></div></div>
-<div class="contact-method"><div class="contact-method-icon"><i class="fas fa-map-marker-alt"></i></div><div class="contact-method-info"><h4>Office</h4><p>Surakarta, Indonesia</p></div></div>
+<!-- WhatsApp - Langsung chat dengan pesan template -->
+<a href="https://wa.me/628813967332?text=Hi%20Forisa%20Impact!%20Saya%20ingin%20berdiskusi%20tentang%20layanan%20konsultasi.%0A%0ANama:%20[Nama%20Anda]%0A%0ACompany:%20[Nama%20Perusahaan]%0A%0ATerima%20kasih." class="contact-method" target="_blank" rel="noopener noreferrer">
+<div class="contact-method-icon"><i class="fab fa-whatsapp"></i></div>
+<div class="contact-method-info"><h4>WhatsApp</h4><p>+62 881-3967-332 (Klik untuk chat)</p></div>
+</a>
+<!-- Email - Langsung buka email client -->
+<a href="mailto:info.ptfias@gmail.com?subject=Konsultasi%20Forisa%20Impact&body=Halo%20Forisa%20Impact,%0A%0ASaya%20tertarik%20dengan%20layanan%20konsultasi%20Anda.%0A%0ANama:%20[Nama%20Anda]%0A%0ACompany:%20[Nama%20Perusahaan]%0A%0APosisi:%20[Jabatan]%0A%0AKebutuhan:%20[Jelaskan%20kebutuhan%20Anda]%0A%0ATerima%20kasih." class="contact-method" target="_blank">
+<div class="contact-method-icon"><i class="fas fa-envelope"></i></div>
+<div class="contact-method-info"><h4>Email</h4><p>info.ptfias@gmail.com (Klik untuk email)</p></div>
+</a>
+<!-- LinkedIn - Langsung ke profil perusahaan -->
+<a href="https://www.linkedin.com/company/pt-forisa-abadijaya-sejahtera/" class="contact-method" target="_blank" rel="noopener noreferrer">
+<div class="contact-method-icon"><i class="fab fa-linkedin-in"></i></div>
+<div class="contact-method-info"><h4>LinkedIn</h4><p>Forisa Impact (Klik untuk profil)</p></div>
+</a>
+<!-- Office - Tidak clickable, info saja -->
+<div class="contact-method" style="cursor:default">
+<div class="contact-method-icon"><i class="fas fa-map-marker-alt"></i></div>
+<div class="contact-method-info"><h4>Office</h4><p>Surakarta, Indonesia</p></div>
+</div>
 </div>
 <div class="contact-closing"><p>"Every organizational challenge has a solution. The first step is having the right conversation."</p></div>
 </div>
+
+<!-- FORM KONTAK LANGSUNG TERKIRIM -->
 <div class="contact-form-wrapper fade-in">
 <h3>Send Us a Message</h3>
-<form>
+<!-- 
+  CARA SETUP FORM INI:
+  1. Daftar di https://formspree.io (GRATIS 50 submit/bulan)
+  2. Buat form baru, copy FORM_ID (contoh: xnqkvnvp)
+  3. Ganti action di bawah: https://formspree.io/f/YOUR_FORM_ID
+  4. Atur email tujuan di dashboard Formspree
+  5. Selesai! Form akan terkirim ke email Anda
+-->
+<form id="contactForm" action="https://formspree.io/f/xojzplgn" method="POST">
+<input type="hidden" name="_subject" value="[Forisa Impact] Pesan Baru dari Website">
+<input type="hidden" name="_replyto" value="info.ptfias@gmail.com">
+<input type="hidden" name="_next" value="https://forisaabadijayasejahtera.github.io/ForisaAbadijayaSejahtera/">
+
 <div class="form-row">
-<div class="form-group"><label>Name</label><input type="text" placeholder="Your name" required></div>
-<div class="form-group"><label>Company</label><input type="text" placeholder="Company name"></div>
+<div class="form-group"><label>Name *</label><input type="text" name="name" placeholder="Your name" required></div>
+<div class="form-group"><label>Company</label><input type="text" name="company" placeholder="Company name"></div>
 </div>
 <div class="form-row">
-<div class="form-group"><label>Position</label><input type="text" placeholder="Your position"></div>
-<div class="form-group"><label>Phone</label><input type="tel" placeholder="Phone number"></div>
+<div class="form-group"><label>Position</label><input type="text" name="position" placeholder="Your position"></div>
+<div class="form-group"><label>Phone</label><input type="tel" name="phone" placeholder="Phone number"></div>
 </div>
-<div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com" required></div>
-<div class="form-group"><label>Business Challenge</label><select><option>Select your primary challenge</option><option>High Employee Turnover</option><option>Compliance & Legal Issues</option><option>Governance & SOP</option><option>Performance Management</option><option>Organization Design</option><option>Other</option></select></div>
-<div class="form-group"><label>Message</label><textarea rows="4" placeholder="Tell us about your situation..."></textarea></div>
-<button type="submit" class="btn-submit">Send Message</button>
+<div class="form-group"><label>Email *</label><input type="email" name="email" placeholder="your@email.com" required></div>
+<div class="form-group"><label>Business Challenge</label>
+<select name="challenge">
+<option value="">Select your primary challenge</option>
+<option value="turnover">High Employee Turnover</option>
+<option value="compliance">Compliance & Legal Issues</option>
+<option value="governance">Governance & SOP</option>
+<option value="performance">Performance Management</option>
+<option value="organization">Organization Design</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div class="form-group"><label>Message</label><textarea name="message" rows="4" placeholder="Tell us about your situation..."></textarea></div>
+<button type="submit" class="btn-submit" id="contactSubmitBtn">Send Message</button>
+<div class="form-status" id="contactFormStatus"></div>
 </form>
 </div>
 </div>
@@ -703,7 +810,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <div class="cta-content fade-in">
 <h2>Let's Discuss Your Business Challenges</h2>
 <p>Ready to transform your organization? Book a free consultation to explore how we can help you achieve sustainable growth.</p>
-<a href="#contact" class="btn btn-primary" style="font-size:1.1rem;padding:1.2rem 2.5rem"><i class="fas fa-calendar-check"></i> Book a Consultation</a>
+<a href="https://wa.me/628813967332?text=Hi%20Forisa%20Impact!%20Saya%20ingin%20booking%20konsultasi%20gratis." class="btn btn-primary" style="font-size:1.1rem;padding:1.2rem 2.5rem" target="_blank"><i class="fab fa-whatsapp"></i> Book a Consultation</a>
 </div>
 </div>
 </section>
@@ -737,48 +844,92 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <h4>Contact</h4>
 <ul>
 <li><a href="#contact">Contact Us</a></li>
-<li><a href="#">WhatsApp</a></li>
-<li><a href="#">LinkedIn</a></li>
-<li><a href="#resources">Downloads</a></li>
+<li><a href="https://wa.me/628813967332" target="_blank">WhatsApp</a></li>
+<li><a href="https://www.linkedin.com/company/pt-forisa-abadijaya-sejahtera/" target="_blank">LinkedIn</a></li>
+<li><a href="mailto:info.ptfias@gmail.com">Email</a></li>
 </ul>
 </div>
 </div>
 <div class="footer-bottom">
 <p>2026 Forisa Impact. All rights reserved.</p>
 <div class="footer-social">
-<a href="https://www.linkedin.com/company/pt-forisa-abadijaya-sejahtera/" target="_blank" class="text-stone-400 hover:text-amber-500 transition-colors flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                    <span>LinkedIn</span></a>
-<a href="https://wa.me/628813967332?text=Hi,%20PT%20Forisa%20Abadijaya%20Sejahtera%20(Forisa%20Impact)!%20saya%20ingin%20berdiskusi%20tentang%20ISLA." target="_blank" class="text-stone-400 hover:text-amber-500 transition-colors flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                    </svg>
-                    <span>Chat WhatsApp</span></a>
-<a href="mailto:info.forisaimpact@gmail.com" class="btn btn-secondary">
-                    <i class="fas fa-envelope"></i> Email Kami
-                </a>
+<a href="https://www.linkedin.com/company/pt-forisa-abadijaya-sejahtera/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+</a>
+<a href="https://wa.me/628813967332" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+<a href="mailto:info.ptfias@gmail.com" title="Email">
+<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+</a>
 </div>
 </div>
 </div>
 </footer>
 
 <script>
+// Navbar scroll effect
 const navbar=document.getElementById('navbar');
 window.addEventListener('scroll',()=>{if(window.scrollY>50){navbar.classList.add('scrolled')}else{navbar.classList.remove('scrolled')}});
 
+// Active nav link
 const sections=document.querySelectorAll('section[id]');
 const navItems=document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll',()=>{let current='';sections.forEach(s=>{if(scrollY>=s.offsetTop-200){current=s.getAttribute('id')}});navItems.forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+current){a.classList.add('active')}})});
 
+// Fade in animation
 const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible')}})},{threshold:0.1});
 document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
 
+// Modal functions
 function openModal(id){document.getElementById(id).classList.add('active');document.body.style.overflow='hidden'}
 function closeModal(e){if(e.target.classList.contains('modal-overlay')){e.target.classList.remove('active');document.body.style.overflow=''}}
 function closeModalDirect(id){document.getElementById(id).classList.remove('active');document.body.style.overflow=''}
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.active').forEach(m=>{m.classList.remove('active')});document.body.style.overflow=''}})
+
+// Form handling with Formspree
+function handleFormSubmit(formId, statusId, btnId) {
+    const form = document.getElementById(formId);
+    const status = document.getElementById(statusId);
+    const btn = document.getElementById(btnId);
+
+    if (!form) return;
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                status.className = 'form-status success show';
+                status.textContent = '✅ Pesan berhasil terkirim! Kami akan menghubungi Anda segera.';
+                form.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            status.className = 'form-status error show';
+            status.textContent = '❌ Terjadi kesalahan. Silakan hubungi kami langsung via WhatsApp atau Email.';
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = formId === 'resourceForm' ? 'Get Access to Resources' : 'Send Message';
+        }
+    });
+}
+
+// Initialize forms
+handleFormSubmit('resourceForm', 'formStatus', 'submitBtn');
+handleFormSubmit('contactForm', 'contactFormStatus', 'contactSubmitBtn');
 </script>
 </body>
 </html>
