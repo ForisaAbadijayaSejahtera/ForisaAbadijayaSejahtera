@@ -734,26 +734,14 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <div class="contact-method-icon"><i class="fab fa-whatsapp"></i></div>
 <div class="contact-method-info"><h4>WhatsApp</h4><p>+62 881-3967-332</p></div>
 </a>
-<!-- Email dengan JavaScript fallback -->
-<a href="mailto:info.ptfias@gmail.com" class="contact-method" onclick="openEmail(); return false;">
+<!-- Email - Langsung buka email client (VERSI FIX) -->
+<a href="mailto:info.ptfias@gmail.com?subject=Konsultasi Forisa Impact&body=Halo Forisa Impact, saya tertarik dengan layanan konsultasi Anda. Mohon info lebih lanjut." class="contact-method">
     <div class="contact-method-icon"><i class="fas fa-envelope"></i></div>
     <div class="contact-method-info">
         <h4>Email</h4>
         <p>info.forisaimpact@gmail.com</p>
     </div>
 </a>
-
-<script>
-function openEmail() {
-    const email = 'info.ptfias@gmail.com';
-    const subject = 'Konsultasi Forisa Impact';
-    const body = 'Halo Forisa Impact,\n\nSaya tertarik dengan layanan konsultasi Anda. Mohon info lebih lanjut.\n\nTerima kasih.';
-    
-    window.location.href = 'mailto:' + email + 
-                          '?subject=' + encodeURIComponent(subject) + 
-                          '&body=' + encodeURIComponent(body);
-}
-</script>
 <!-- LinkedIn - Langsung ke profil perusahaan -->
 <a href="https://www.linkedin.com/company/pt-forisa-abadijaya-sejahtera/" class="contact-method" target="_blank" rel="noopener noreferrer">
 <div class="contact-method-icon"><i class="fab fa-linkedin-in"></i></div>
