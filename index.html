@@ -732,17 +732,32 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <!-- WhatsApp - Langsung chat dengan pesan template -->
 <a href="https://wa.me/628813967332?text=Hi%20Forisa%20Impact!%20Saya%20ingin%20berdiskusi%20tentang%20layanan%20konsultasi.%0A%0ANama:%20[Nama%20Anda]%0A%0ACompany:%20[Nama%20Perusahaan]%0A%0ATerima%20kasih." class="contact-method" target="_blank" rel="noopener noreferrer">
 <div class="contact-method-icon"><i class="fab fa-whatsapp"></i></div>
-<div class="contact-method-info"><h4>WhatsApp</h4><p>+62 881-3967-332 (Klik untuk chat)</p></div>
+<div class="contact-method-info"><h4>WhatsApp</h4><p>+62 881-3967-332</p></div>
 </a>
-<!-- Email - Langsung buka email client -->
-<a href="mailto:info.ptfias@gmail.com?subject=Konsultasi%20Forisa%20Impact&body=Halo%20Forisa%20Impact,%0A%0ASaya%20tertarik%20dengan%20layanan%20konsultasi%20Anda.%0A%0ANama:%20[Nama%20Anda]%0A%0ACompany:%20[Nama%20Perusahaan]%0A%0APosisi:%20[Jabatan]%0A%0AKebutuhan:%20[Jelaskan%20kebutuhan%20Anda]%0A%0ATerima%20kasih." class="contact-method" target="_blank">
-<div class="contact-method-icon"><i class="fas fa-envelope"></i></div>
-<div class="contact-method-info"><h4>Email</h4><p>info.ptfias@gmail.com (Klik untuk email)</p></div>
+<!-- Email dengan JavaScript fallback -->
+<a href="#" class="contact-method" onclick="openEmail(); return false;">
+    <div class="contact-method-icon"><i class="fas fa-envelope"></i></div>
+    <div class="contact-method-info">
+        <h4>Email</h4>
+        <p>info.ptfias@gmail.com (Klik untuk email)</p>
+    </div>
 </a>
+
+<script>
+function openEmail() {
+    const email = 'info.ptfias@gmail.com';
+    const subject = 'Konsultasi Forisa Impact';
+    const body = 'Halo Forisa Impact,\n\nSaya tertarik dengan layanan konsultasi Anda. Mohon info lebih lanjut.\n\nTerima kasih.';
+    
+    window.location.href = 'mailto:' + email + 
+                          '?subject=' + encodeURIComponent(subject) + 
+                          '&body=' + encodeURIComponent(body);
+}
+</script>
 <!-- LinkedIn - Langsung ke profil perusahaan -->
 <a href="https://www.linkedin.com/company/pt-forisa-abadijaya-sejahtera/" class="contact-method" target="_blank" rel="noopener noreferrer">
 <div class="contact-method-icon"><i class="fab fa-linkedin-in"></i></div>
-<div class="contact-method-info"><h4>LinkedIn</h4><p>Forisa Impact (Klik untuk profil)</p></div>
+<div class="contact-method-info"><h4>LinkedIn</h4><p>Forisa Impact</p></div>
 </a>
 <!-- Office - Tidak clickable, info saja -->
 <div class="contact-method" style="cursor:default">
