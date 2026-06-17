@@ -104,21 +104,28 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 .insight-body h3{font-size:1.15rem;color:var(--primary);margin-bottom:.8rem;font-family:'Inter',sans-serif;font-weight:600}
 .insight-body p{color:var(--text-light);font-size:.9rem;line-height:1.6}
 
-.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(15,23,42,.7);backdrop-filter:blur(8px);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .3s ease;padding:2rem}
-.modal-overlay.active{opacity:1;visibility:visible}
-.modal-content{background:var(--white);border-radius:20px;max-width:700px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(30px);transition:transform .3s ease;box-shadow:0 25px 50px -12px rgba(0,0,0,.25)}
-.modal-overlay.active .modal-content{transform:translateY(0)}
-.modal-header{padding:2.5rem 2.5rem 0;position:relative}
-.modal-header .insight-category{position:static;display:inline-block;margin-bottom:1rem}
-.modal-header h2{font-size:1.8rem;color:var(--primary);margin-bottom:1rem;line-height:1.3}
-.modal-meta{display:flex;gap:1.5rem;color:var(--text-light);font-size:.9rem;margin-bottom:1.5rem}
-.modal-body{padding:0 2.5rem 2.5rem;color:var(--text);line-height:1.8;font-size:1rem}
-.modal-body h3{font-family:'Inter',sans-serif;font-size:1.1rem;color:var(--primary);margin:1.5rem 0 .5rem;font-weight:600}
-.modal-body p{margin-bottom:1rem}
-.modal-body ul{margin-left:1.5rem;margin-bottom:1rem}
-.modal-body li{margin-bottom:.5rem}
-.modal-close{position:absolute;top:1.5rem;right:1.5rem;width:40px;height:40px;background:var(--light);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--text);transition:var(--transition)}
-.modal-close:hover{background:var(--primary);color:var(--white);transform:rotate(90deg)}
+/* Insight Detail Page */
+.insight-detail-page{display:none;min-height:100vh;background:var(--light)}
+.insight-detail-page.active{display:block}
+.insight-detail-header{background:linear-gradient(135deg,var(--dark) 0%,var(--primary) 100%);padding:8rem 0 4rem;color:var(--white);position:relative;overflow:hidden}
+.insight-detail-header::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");opacity:.5}
+.insight-detail-header-content{position:relative;z-index:2;max-width:800px;margin:0 auto;padding:0 2rem}
+.insight-detail-header .insight-category{position:static;display:inline-block;margin-bottom:1.5rem;background:var(--accent);color:var(--dark);padding:.4rem 1rem;border-radius:50px;font-size:.85rem;font-weight:600}
+.insight-detail-header h1{font-size:2.8rem;margin-bottom:1.5rem;line-height:1.2}
+.insight-detail-meta{display:flex;gap:2rem;color:rgba(255,255,255,.7);font-size:.95rem;margin-bottom:2rem}
+.insight-detail-meta span{display:flex;align-items:center;gap:.5rem}
+.insight-detail-share{display:flex;gap:1rem}
+.insight-detail-share button{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:var(--white);padding:.6rem 1.2rem;border-radius:8px;cursor:pointer;transition:var(--transition);font-size:.9rem;font-weight:500;display:flex;align-items:center;gap:.5rem}
+.insight-detail-share button:hover{background:var(--accent);color:var(--dark);border-color:var(--accent)}
+.insight-detail-body{max-width:800px;margin:0 auto;padding:4rem 2rem}
+.insight-detail-body p{color:var(--text);font-size:1.05rem;line-height:1.8;margin-bottom:1.5rem}
+.insight-detail-body h3{font-family:'Inter',sans-serif;font-size:1.3rem;color:var(--primary);margin:2.5rem 0 1rem;font-weight:700}
+.insight-detail-body b{color:var(--primary)}
+.insight-detail-body ul{margin-left:2rem;margin-bottom:1.5rem;color:var(--text)}
+.insight-detail-body li{margin-bottom:.5rem;font-size:1.05rem;line-height:1.7}
+.insight-detail-back{display:inline-flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.8);font-size:.95rem;cursor:pointer;transition:var(--transition);margin-bottom:1.5rem}
+.insight-detail-back:hover{color:var(--accent)}
+.insight-detail-back i{font-size:.8rem}
 
 /* ABOUT US - KOTAK FOTO */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
@@ -242,27 +249,27 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--light)}::-webkit-scrollbar-thumb{background:var(--primary-light);border-radius:4px}::-webkit-scrollbar-thumb:hover{background:var(--primary)}
 </style>
 <base target="_blank">
-<base target="_blank">
 </head>
 <body>
 <nav class="navbar" id="navbar">
 <div class="nav-container">
-<a href="#" class="logo">Forisa<span>.</span>Impact</a>
+<a href="#" class="logo" onclick="goHome()">Forisa<span>.</span>Impact</a>
 <ul class="nav-links">
-<li><a href="#home">Beranda</a></li>
-<li><a href="#about">Tentang Kami</a></li>
-<li><a href="#founder">Founder</a></li>
-<li><a href="#founder">Founder</a></li>
-<li><a href="#services">Layanan</a></li>
-<li><a href="#insights">Insight</a></li>
-<li><a href="#case-studies">Studi Kasus</a></li>
-<li><a href="#resources">Resources</a></li>
-<li><a href="#contact" class="nav-cta">Kontak</a></li>
+<li><a href="#home" onclick="goHome()">Beranda</a></li>
+<li><a href="#about" onclick="goHome()">Tentang Kami</a></li>
+<li><a href="#founder" onclick="goHome()">Founder</a></li>
+<li><a href="#services" onclick="goHome()">Layanan</a></li>
+<li><a href="#insights" onclick="goHome()">Insight</a></li>
+<li><a href="#case-studies" onclick="goHome()">Studi Kasus</a></li>
+<li><a href="#resources" onclick="goHome()">Resources</a></li>
+<li><a href="#contact" class="nav-cta" onclick="goHome()">Kontak</a></li>
 </ul>
 <button class="mobile-toggle" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display=='flex'?'none':'flex';"><i class="fas fa-bars"></i></button>
 </div>
 </nav>
 
+<!-- HOME PAGE CONTENT -->
+<div id="homePage">
 <section class="hero" id="home">
 <div class="hero-container">
 <div class="hero-content fade-in">
@@ -270,7 +277,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <p>Helping organizations strengthen performance, reduce risk, and achieve sustainable growth through practical consulting and implementation support.</p>
 <div class="hero-buttons">
 <a href="https://wa.me/628813967332?text=Hi%20Forisa%20Impact!%20Saya%20ingin%20berdiskusi%20tentang%20layanan%20konsultasi." class="btn btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> Konsultasi via WhatsApp</a>
-<a href="#resources" class="btn btn-outline"><i class="fas fa-download"></i> Download Company Profile</a>
+<a href="#resources" class="btn btn-outline" onclick="goHome()"><i class="fas fa-download"></i> Download Company Profile</a>
 </div>
 </div>
 <div class="hero-visual fade-in">
@@ -282,6 +289,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 </div>
 </div>
 </section>
+
 <section class="section challenges" id="challenges">
 <div class="container">
 <div class="section-header fade-in">
@@ -295,7 +303,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <div class="challenge-card fade-in"><div class="challenge-icon"><i class="fas fa-gavel"></i></div><h3>Labor Disputes & IR Issues</h3><p>Industrial relation conflicts that disrupt productivity and damage workplace culture.</p></div>
 <div class="challenge-card fade-in"><div class="challenge-icon"><i class="fas fa-user-slash"></i></div><h3>Weak Accountability</h3><p>Lack of clear responsibility across departments leading to blame culture.</p></div>
 <div class="challenge-card fade-in"><div class="challenge-icon"><i class="fas fa-exclamation-triangle"></i></div><h3>Compliance & Governance Risks</h3><p>Regulatory gaps that expose the organization to legal and financial penalties.</p></div>
-<div class="challenge-card fade-in"><div class="challenge-icon"><i class="fas fa-chart-line"></i></div><h3>Busy But Targets Unmet</h3><p>Teams work hard but results don't align with strategic business objectives.</p></div>
+<div class="challenge-card fade-in"><div class="challenge-icon"><i class="fas fa-chart-line"></i></div><h3>Busy But Targets Unmet</h3><p>Teams work hard but results do not align with strategic business objectives.</p></div>
 <div class="challenge-card fade-in"><div class="challenge-icon"><i class="fas fa-sitemap"></i></div><h3>Growth Without Structure</h3><p>Expanding business without proper organizational framework to support scale.</p></div>
 <div class="challenge-card fade-in"><div class="challenge-icon"><i class="fas fa-fire-extinguisher"></i></div><h3>Leaders in Daily Operations</h3><p>Leadership trapped in firefighting instead of strategic planning and growth.</p></div>
 </div>
@@ -331,7 +339,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <div class="section-header fade-in">
 <span class="tag">Why Us</span>
 <h2>Why Business Leaders Choose Forisa Abadijaya Sejahtera (Forisa Impact)</h2>
-<p>We don't just consult — we partner with you to implement real, measurable change.</p>
+<p>We do not just consult — we partner with you to implement real, measurable change.</p>
 </div>
 <div class="why-grid">
 <div class="why-card fade-in"><div class="why-number">01</div><h3>Practical & Implementation-Focused</h3><p>We focus on actionable strategies, not just theoretical recommendations that sit on shelves.</p></div>
@@ -362,6 +370,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 </div>
 </section>
 
+<!-- INSIGHTS SECTION - Clickable cards with URL routing -->
 <section class="section insights" id="insights">
 <div class="container">
 <div class="section-header fade-in">
@@ -370,27 +379,27 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <p>Practical knowledge and perspectives for business leaders navigating organizational challenges.</p>
 </div>
 <div class="insights-grid">
-<div class="insight-card fade-in" onclick="openModal('modal1')">
+<div class="insight-card fade-in" onclick="openInsight('why-busy-teams-miss-targets')">
 <div class="insight-image"><i class="fas fa-bullseye"></i><span class="insight-category">Business Performance</span></div>
 <div class="insight-body"><h3>Why Busy Teams Often Miss Their Targets</h3><p>Understanding the disconnect between activity and outcomes in organizational performance.</p></div>
 </div>
-<div class="insight-card fade-in" onclick="openModal('modal2')">
+<div class="insight-card fade-in" onclick="openInsight('hidden-costs-poor-hr-governance')">
 <div class="insight-image"><i class="fas fa-coins"></i><span class="insight-category">Human Resources</span></div>
 <div class="insight-body"><h3>Hidden Costs of Poor HR Governance</h3><p>The financial and operational impact of neglecting proper people management systems.</p></div>
 </div>
-<div class="insight-card fade-in" onclick="openModal('modal3')">
+<div class="insight-card fade-in" onclick="openInsight('scaling-without-structure')">
 <div class="insight-image"><i class="fas fa-expand-arrows-alt"></i><span class="insight-category">Organizational Development</span></div>
 <div class="insight-body"><h3>Scaling Without Structure</h3><p>Why rapid growth without proper organizational framework leads to breakdown.</p></div>
 </div>
-<div class="insight-card fade-in" onclick="openModal('modal4')">
+<div class="insight-card fade-in" onclick="openInsight('sop-without-ownership')">
 <div class="insight-image"><i class="fas fa-file-contract"></i><span class="insight-category">Governance</span></div>
 <div class="insight-body"><h3>SOP Without Ownership</h3><p>Why documented procedures fail when accountability is missing from the equation.</p></div>
 </div>
-<div class="insight-card fade-in" onclick="openModal('modal5')">
+<div class="insight-card fade-in" onclick="openInsight('cost-weak-accountability')">
 <div class="insight-image"><i class="fas fa-exclamation-circle"></i><span class="insight-category">Compliance</span></div>
 <div class="insight-body"><h3>The Cost of Weak Accountability</h3><p>How lack of clear responsibility chains erode organizational effectiveness over time.</p></div>
 </div>
-<div class="insight-card fade-in" onclick="openModal('modal6')">
+<div class="insight-card fade-in" onclick="openInsight('leadership-blind-spots')">
 <div class="insight-image"><i class="fas fa-eye-slash"></i><span class="insight-category">Leadership</span></div>
 <div class="insight-body"><h3>Leadership Blind Spots</h3><p>Common oversight patterns that prevent leaders from seeing organizational dysfunction early.</p></div>
 </div>
@@ -398,133 +407,12 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 </div>
 </section>
 
-<div class="modal-overlay" id="modal1" onclick="closeModal(event)">
-<div class="modal-content" onclick="event.stopPropagation()">
-<div class="modal-header">
-<span class="insight-category">Business Performance</span>
-<button class="modal-close" onclick="closeModalDirect('modal1')"><i class="fas fa-times"></i></button>
-<h2>Why Busy Teams Often Miss Their Targets</h2>
-<div class="modal-meta"><span><i class="far fa-clock"></i> 8 min read</span><span><i class="far fa-calendar"></i> June 2026</span></div>
-</div>
-<div class="modal-body">
-<p>At first glance, busy teams appear productive. Calendars are full, meetings are constant, and employees seem occupied throughout the day. Yet many organizations still struggle to achieve their most important goals. The problem is not usually a lack of effort. More often, it is a lack of alignment.</p>
-<p>Teams miss targets when too much time is spent on activities that create movement but not meaningful progress. Meetings multiply, priorities shift, and urgent tasks consume attention while strategic objectives remain untouched.</p>
-<p>Another common challenge is unclear ownership. When responsibilities are not clearly assigned, critical tasks can be delayed, duplicated, or overlooked entirely. Everyone is working, but no one is accountable for the outcome.</p>
-<p>Many organizations also fall into the trap of measuring activity rather than results. Hours worked, emails sent, and meetings attended may indicate effort, but they do not necessarily indicate achievement.</p>
-<p>High-performing teams operate differently. They understand what matters most, focus resources on key priorities, and maintain clear accountability for outcomes. Their success comes not from being busier, but from being more aligned.</p>
-<p>Organizations rarely fail because people are not working hard enough. They fail when effort, priorities, and accountability are disconnected from the goals they are trying to achieve.</p>
-<h3>Keynote Why Busy Teams Often Miss Their Targets</h3>
-<p><b>The question leaders should ask is not, “Are we busy?” but rather, “Are we making progress toward what matters most?”</b></p>
-</div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal2" onclick="closeModal(event)">
-<div class="modal-content" onclick="event.stopPropagation()">
-<div class="modal-header">
-<span class="insight-category">Human Resources</span>
-<button class="modal-close" onclick="closeModalDirect('modal2')"><i class="fas fa-times"></i></button>
-<h2>Hidden Costs of Poor HR Governance</h2>
-<div class="modal-meta"><span><i class="far fa-clock"></i> 10 min read</span><span><i class="far fa-calendar"></i> May 2026</span></div>
-</div>
-<div class="modal-body">
-<p>Many organizations associate HR governance with policies, procedures, and compliance requirements. As a result, it is often viewed as an administrative function rather than a strategic necessity.</p>
-<p>However, weak HR governance carries costs that are not always immediately visible.</p>
-<p>When roles, responsibilities, and decision-making processes are unclear, inconsistencies begin to emerge. Recruitment decisions become subjective, performance evaluations vary between managers, and employee issues are handled differently across teams. Over time, these inconsistencies create confusion, reduce trust, and increase organizational risk. Poor HR governance can also lead to higher employee turnover. Employees are more likely to disengage when they perceive unfair treatment, unclear expectations, or inconsistent application of policies. The cost of replacing talent often exceeds the investment required to establish proper governance in the first place.</p>
-<p>Beyond people-related challenges, weak governance affects operational efficiency. Managers spend more time resolving recurring issues, addressing conflicts, and correcting preventable mistakes instead of focusing on growth and performance.</p>
-<p>Strong HR governance is not about creating more bureaucracy. It is about establishing clarity, consistency, accountability, and fairness across the organization. The most significant costs of poor HR governance are often the ones that never appear on a financial report—lost trust, reduced engagement, increased risk, and missed opportunities for growth.</p>
-<h3>Keynote Hidden Costs of Poor HR Governance</h3>
-<p><b>Organizations grow stronger when people decisions are guided by clear principles, consistent processes, and accountable leadership.</b></p>
-</div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal3" onclick="closeModal(event)">
-<div class="modal-content" onclick="event.stopPropagation()">
-<div class="modal-header">
-<span class="insight-category">Organizational Development</span>
-<button class="modal-close" onclick="closeModalDirect('modal3')"><i class="fas fa-times"></i></button>
-<h2>Scaling Without Structure</h2>
-<div class="modal-meta"><span><i class="far fa-clock"></i> 7 min read</span><span><i class="far fa-calendar"></i> May 2026</span></div>
-</div>
-<div class="modal-body">
-<p>Growth is often seen as a sign of success. More customers, more employees, and expanding operations can create the impression that an organization is moving in the right direction.</p>
-<p>However, growth without structure can quickly become a source of complexity and inefficiency. As organizations scale, informal ways of working that once seemed effective begin to break down. Communication becomes fragmented, decision-making slows, and responsibilities become increasingly unclear. What worked for a small team often struggles to support a larger and more complex organization.</p>
-<p>Many companies respond to growth by adding more people. Yet without clear structures, defined roles, and consistent processes, additional headcount can create more confusion rather than better results.</p>
-<p>A lack of structure often leads to duplicated efforts, inconsistent execution, and growing dependence on a few key individuals. As complexity increases, leaders spend more time solving operational issues instead of focusing on strategy and growth.</p>
-<p>Sustainable growth requires more than ambition. It requires a foundation that enables people, processes, and decisions to work together effectively.</p>
-<p>Structure should not be viewed as bureaucracy. When designed well, it creates clarity, improves accountability, and allows organizations to scale with greater consistency and confidence.</p>  
-<h3>keynote Scaling Without Structure</h3>
-<p><b></b>Growth creates opportunity, but structure is what allows organizations to sustain it. 🚀</p>
-</div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal4" onclick="closeModal(event)">
-<div class="modal-content" onclick="event.stopPropagation()">
-<div class="modal-header">
-<span class="insight-category">Governance</span>
-<button class="modal-close" onclick="closeModalDirect('modal4')"><i class="fas fa-times"></i></button>
-<h2>SOP Without Ownership</h2>
-<div class="modal-meta"><span><i class="far fa-clock"></i> 6 min read</span><span><i class="far fa-calendar"></i> April 2026</span></div>
-</div>
-<div class="modal-body">
-<p>Many organizations invest significant time and effort in creating Standard Operating Procedures (SOPs). Documents are written, processes are mapped, and guidelines are distributed across teams.</p>
-<p>Yet despite having well-documented procedures, execution often remains inconsistent. The reason is simple: a process without ownership rarely delivers the intended results.</p>
-<p>When no individual or team is clearly responsible for maintaining, monitoring, and improving a process, SOPs gradually become outdated or ignored. Employees may follow different interpretations, exceptions become common, and process discipline begins to decline. Effective SOPs are not just documents. They require clear ownership, accountability, and continuous reinforcement.</p>
-<p>Organizations achieve operational consistency not because procedures exist, but because someone is responsible for ensuring they are followed and improved over time.</p>
-<h3>Keynote SOP Without Ownership</h3>
-<p><b></b>Processes create consistency, but ownership ensures they work.</p>
-</div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal5" onclick="closeModal(event)">
-<div class="modal-content" onclick="event.stopPropagation()">
-<div class="modal-header">
-<span class="insight-category">Compliance</span>
-<button class="modal-close" onclick="closeModalDirect('modal5')"><i class="fas fa-times"></i></button>
-<h2>The Cost of Weak Accountability</h2>
-<div class="modal-meta"><span><i class="far fa-clock"></i> 9 min read</span><span><i class="far fa-calendar"></i> April 2026</span></div>
-</div>
-<div class="modal-body">
-<p>Most organizations set goals, define strategies, and establish performance expectations. However, achieving results depends on more than planning—it depends on accountability.</p>
-<p>When accountability is weak, important tasks are delayed, commitments are overlooked, and performance issues remain unresolved. Teams may stay busy, but progress becomes difficult to measure and sustain.</p>
-<p>A lack of accountability often creates confusion about who owns specific outcomes. As responsibilities become blurred, problems are passed between departments, decisions are postponed, and execution slows down.</p>
-<p>The cost extends beyond missed deadlines. Weak accountability reduces trust, lowers performance standards, and creates a culture where expectations are unclear.</p>
-<p>High-performing organizations build accountability into their daily operations. They establish clear ownership, measurable expectations, and regular follow-through on commitments.</p>  
-<h3>Keynote The Cost of Weak Accountability</h3>
-<p>AAccountability is not about assigning blame. It is about creating clarity, ownership, and consistent execution.</p>
-</div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal6" onclick="closeModal(event)">
-<div class="modal-content" onclick="event.stopPropagation()">
-<div class="modal-header">
-<span class="insight-category">Leadership</span>
-<button class="modal-close" onclick="closeModalDirect('modal6')"><i class="fas fa-times"></i></button>
-<h2>Leadership Blind Spots</h2>
-<div class="modal-meta"><span><i class="far fa-clock"></i> 8 min read</span><span><i class="far fa-calendar"></i> March 2026</span></div>
-</div>
-<div class="modal-body">
-<p>Leaders make decisions based on the information they can see. The challenge is that some of the most significant organizational risks are often hidden from view.</p>
-<p>Leadership blind spots occur when critical issues remain unnoticed or underestimated. These may include declining employee engagement, communication breakdowns, unclear priorities, cultural challenges, or operational inefficiencies that develop gradually over time.</p>
-<p>As organizations grow, leaders can become increasingly removed from day-to-day realities. Success, experience, and authority may unintentionally limit exposure to alternative perspectives or early warning signs.</p>
-<p>The impact of blind spots is rarely immediate. Instead, small issues accumulate until they begin affecting performance, morale, and organizational effectiveness.</p>
-<p>Strong leaders recognize that they do not have complete visibility. They actively seek feedback, encourage open communication, and create systems that surface problems before they become significant challenges.</p>
-<h3>Keynote the Blind Spots</h3>
-<p><b></b>The greatest leadership risk is not what leaders know—it is what they do not see. 👀🚀</p>
-</div>
-</div>
-</div>
-<!-- ABOUT US - KOTAK FOTO -->
+<!-- ABOUT US -->
 <section class="section" id="about">
 <div class="container">
 <div class="about-grid">
 <div class="about-image fade-in">
 <div class="about-image-main">
-<!-- GANTI src dengan path foto Anda -->
 <img src="Forisa.jpeg" alt="Forisa" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
 <div class="about-stats"><div class="about-stats-number">12+</div><div class="about-stats-label">Years Experience</div></div>
 </div>
@@ -553,8 +441,8 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 </div>
 </div>
 </div>
+</div>
 </section>
-
 
 <!-- FOUNDER PROFILE -->
 <section class="section" id="founder">
@@ -586,7 +474,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <p class="mt-4">Yanto holds a strong belief that organizational excellence starts with people. Her approach combines strategic thinking with hands-on implementation, ensuring that every recommendation translates into real business outcomes.</p>
 <div class="about-mission" style="margin-top:2rem;">
 <h4>Areas of Expertise</h4>
-<p>Organization Development • HR Audit & Compliance • Industrial Relations • Governance Framework • Risk Management • Performance Management</p>
+<p>Organization Development &bull; HR Audit & Compliance &bull; Industrial Relations &bull; Governance Framework &bull; Risk Management &bull; Performance Management</p>
 </div>
 <div style="margin-top:2rem; padding:1.5rem; background:var(--light); border-radius:12px; border-left:4px solid var(--primary);">
 <h4 style="font-family:'Inter',sans-serif; font-size:.9rem; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--primary); margin-bottom:.5rem;">Vision</h4>
@@ -600,7 +488,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 </div>
 </div>
 </section>
-  
+
 <section class="section services" id="services">
 <div class="container">
 <div class="section-header fade-in">
@@ -671,7 +559,8 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 </div>
 </div>
 </section>
-<!-- RESOURCES - DOWNLOAD BERKAS AKTIF -->
+
+<!-- RESOURCES -->
 <section class="section resources" id="resources">
 <div class="container">
 <div class="section-header fade-in">
@@ -686,7 +575,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <div class="download-info">
 <h4>Company Profile</h4>
 <p>Complete overview of Forisa Impact services and approach.</p>
-<div class="file-size">PDF • 2.4 MB</div>
+<div class="file-size">PDF &bull; 2.4 MB</div>
 </div>
 <i class="fas fa-download download-arrow"></i>
 </a>
@@ -695,7 +584,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <div class="download-info">
 <h4>HR Health Check Checklist</h4>
 <p>Self-assessment tool for your HR function.</p>
-<div class="file-size">PDF • 1.1 MB</div>
+<div class="file-size">PDF &bull; 1.1 MB</div>
 </div>
 <i class="fas fa-download download-arrow"></i>
 </a>
@@ -704,7 +593,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <div class="download-info">
 <h4>Governance Assessment Checklist</h4>
 <p>Evaluate your governance maturity level.</p>
-<div class="file-size">PDF • 890 KB</div>
+<div class="file-size">PDF &bull; 890 KB</div>
 </div>
 <i class="fas fa-download download-arrow"></i>
 </a>
@@ -713,7 +602,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <div class="download-info">
 <h4>Compliance Readiness Checklist</h4>
 <p>Ensure your organization meets regulatory requirements.</p>
-<div class="file-size">PDF • 1.5 MB</div>
+<div class="file-size">PDF &bull; 1.5 MB</div>
 </div>
 <i class="fas fa-download download-arrow"></i>
 </a>
@@ -722,7 +611,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <div class="download-info">
 <h4>Business Improvement Whitepaper</h4>
 <p>Strategic insights on organizational transformation.</p>
-<div class="file-size">PDF • 3.2 MB</div>
+<div class="file-size">PDF &bull; 3.2 MB</div>
 </div>
 <i class="fas fa-download download-arrow"></i>
 </a>
@@ -731,29 +620,19 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <div class="download-info">
 <h4>Operational Excellence Guide</h4>
 <p>Framework for achieving operational consistency.</p>
-<div class="file-size">PDF • 2.8 MB</div>
+<div class="file-size">PDF &bull; 2.8 MB</div>
 </div>
 <i class="fas fa-download download-arrow"></i>
 </a>
 </div>
 
-<!-- FORM LANGSUNG TERKIRIM KE EMAIL -->
 <div class="lead-form fade-in">
 <h3>Download Resources</h3>
 <p>Fill in your details to access our free resources.</p>
-<!-- 
-  CARA SETUP FORM INI:
-  1. Daftar di https://formspree.io (GRATIS 50 submit/bulan)
-  2. Buat form baru, copy FORM_ID (contoh: xnqkvnvp)
-  3. Ganti action di bawah: https://formspree.io/f/YOUR_FORM_ID
-  4. Atur email tujuan di dashboard Formspree
-  5. Selesai! Form akan terkirim ke email Anda
--->
 <form id="resourceForm" action="https://formspree.io/f/xojzplgn" method="POST">
 <input type="hidden" name="_subject" value="[Forisa Impact] Permintaan Download Resources">
 <input type="hidden" name="_replyto" value="info.ptfias@gmail.com">
 <input type="hidden" name="_next" value="https://forisaabadijayasejahtera.github.io/ForisaAbadijayaSejahtera/">
-
 <div class="form-row">
 <div class="form-group"><label>Name *</label><input type="text" name="name" placeholder="Your full name" required></div>
 <div class="form-group"><label>Company *</label><input type="text" name="company" placeholder="Company name" required></div>
@@ -781,7 +660,8 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 </div>
 </div>
 </section>
-<!-- CONTACT - LINK AKTIF WA, EMAIL, LINKEDIN -->
+
+<!-- CONTACT -->
 <section class="section" id="contact">
 <div class="container">
 <div class="contact-grid">
@@ -790,22 +670,18 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <h2>Let's Start the Conversation</h2>
 <p>Whether you are dealing with workforce issues, compliance concerns, governance challenges, or organizational growth, we are ready to help.</p>
 <div class="contact-methods">
-<!-- WhatsApp - Langsung chat dengan pesan template -->
 <a href="https://wa.me/628813967332?text=Hi%20Forisa%20Impact!%20Saya%20ingin%20berdiskusi%20tentang%20layanan%20konsultasi.%0A%0ANama:%20[Nama%20Anda]%0A%0ACompany:%20[Nama%20Perusahaan]%0A%0ATerima%20kasih." class="contact-method" target="_blank" rel="noopener noreferrer">
 <div class="contact-method-icon"><i class="fab fa-whatsapp"></i></div>
 <div class="contact-method-info"><h4>WhatsApp</h4><p>+62 881-3967-332</p></div>
 </a>
-<!-- Email - Langsung buka email client -->
 <a href="mailto:info.ptfias@gmail.com" class="contact-method">
 <div class="contact-method-icon"><i class="fas fa-envelope"></i></div>
 <div class="contact-method-info"><h4>Email</h4><p>info.forisaimpact@gmail.com</p></div>
 </a>
-<!-- LinkedIn - Langsung ke profil perusahaan -->
 <a href="https://www.linkedin.com/company/pt-forisa-abadijaya-sejahtera/" class="contact-method" target="_blank" rel="noopener noreferrer">
 <div class="contact-method-icon"><i class="fab fa-linkedin-in"></i></div>
 <div class="contact-method-info"><h4>LinkedIn</h4><p>Forisa Impact</p></div>
 </a>
-<!-- Office - Tidak clickable, info saja -->
 <div class="contact-method" style="cursor:default">
 <div class="contact-method-icon"><i class="fas fa-map-marker-alt"></i></div>
 <div class="contact-method-info"><h4>Office</h4><p>Surakarta, Indonesia</p></div>
@@ -813,23 +689,12 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 </div>
 <div class="contact-closing"><p>"Every organizational challenge has a solution. The first step is having the right conversation."</p></div>
 </div>
-
-<!-- FORM KONTAK LANGSUNG TERKIRIM -->
 <div class="contact-form-wrapper fade-in">
 <h3>Send Us a Message</h3>
-<!-- 
-  CARA SETUP FORM INI:
-  1. Daftar di https://formspree.io (GRATIS 50 submit/bulan)
-  2. Buat form baru, copy FORM_ID (contoh: xnqkvnvp)
-  3. Ganti action di bawah: https://formspree.io/f/YOUR_FORM_ID
-  4. Atur email tujuan di dashboard Formspree
-  5. Selesai! Form akan terkirim ke email Anda
--->
 <form id="contactForm" action="https://formspree.io/f/xojzplgn" method="POST">
 <input type="hidden" name="_subject" value="[Forisa Impact] Pesan Baru dari Website">
 <input type="hidden" name="_replyto" value="info.ptfias@gmail.com">
 <input type="hidden" name="_next" value="https://forisaabadijayasejahtera.github.io/ForisaAbadijayaSejahtera/">
-
 <div class="form-row">
 <div class="form-group"><label>Name *</label><input type="text" name="name" placeholder="Your name" required></div>
 <div class="form-group"><label>Company</label><input type="text" name="company" placeholder="Company name"></div>
@@ -873,31 +738,31 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 <div class="container">
 <div class="footer-grid">
 <div class="footer-brand">
-<a href="#" class="logo">Forisa<span>.</span>Impact</a>
+<a href="#" class="logo" onclick="goHome()">Forisa<span>.</span>Impact</a>
 <p>Business consulting partner dedicated to helping organizations improve performance through stronger people management, legal compliance, and governance systems.</p>
 </div>
 <div class="footer-col">
 <h4>Quick Links</h4>
 <ul>
-<li><a href="#home">Beranda</a></li>
-<li><a href="#about">Tentang Kami</a></li>
-<li><a href="#services">Layanan</a></li>
-<li><a href="#insights">Insight</a></li>
+<li><a href="#home" onclick="goHome()">Beranda</a></li>
+<li><a href="#about" onclick="goHome()">Tentang Kami</a></li>
+<li><a href="#services" onclick="goHome()">Layanan</a></li>
+<li><a href="#insights" onclick="goHome()">Insight</a></li>
 </ul>
 </div>
 <div class="footer-col">
 <h4>Services</h4>
 <ul>
-<li><a href="#services">HR Consulting</a></li>
-<li><a href="#services">Legal & IR</a></li>
-<li><a href="#services">Governance & Risk</a></li>
-<li><a href="#resources">Resources</a></li>
+<li><a href="#services" onclick="goHome()">HR Consulting</a></li>
+<li><a href="#services" onclick="goHome()">Legal & IR</a></li>
+<li><a href="#services" onclick="goHome()">Governance & Risk</a></li>
+<li><a href="#resources" onclick="goHome()">Resources</a></li>
 </ul>
 </div>
 <div class="footer-col">
 <h4>Contact</h4>
 <ul>
-<li><a href="#contact">Contact Us</a></li>
+<li><a href="#contact" onclick="goHome()">Contact Us</a></li>
 <li><a href="https://wa.me/628813967332" target="_blank">WhatsApp</a></li>
 <li><a href="https://www.linkedin.com/company/pt-forisa-abadijaya-sejahtera/" target="_blank">LinkedIn</a></li>
 <li><a href="mailto:info.ptfias@gmail.com">Email</a></li>
@@ -920,60 +785,226 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2
 </div>
 </div>
 </footer>
+</div>
+<!-- END HOME PAGE -->
+
+<!-- INSIGHT DETAIL PAGE -->
+<div id="insightDetailPage" class="insight-detail-page">
+<div class="insight-detail-header">
+<div class="insight-detail-header-content">
+<div class="insight-detail-back" onclick="goHome()"><i class="fas fa-arrow-left"></i> Kembali ke Insight</div>
+<span class="insight-category" id="detailCategory">Business Performance</span>
+<h1 id="detailTitle">Why Busy Teams Often Miss Their Targets</h1>
+<div class="insight-detail-meta">
+<span id="detailReadTime"><i class="far fa-clock"></i> 8 min read</span>
+<span id="detailDate"><i class="far fa-calendar"></i> June 2026</span>
+</div>
+<div class="insight-detail-share">
+<button onclick="shareLinkedIn()"><i class="fab fa-linkedin"></i> LinkedIn</button>
+<button onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+<button onclick="copyLink()"><i class="fas fa-link"></i> Copy Link</button>
+</div>
+</div>
+</div>
+<div class="insight-detail-body" id="detailBody">
+<!-- Content injected via JS -->
+</div>
+</div>
 
 <script>
-// Navbar scroll effect
-const navbar=document.getElementById('navbar');
-window.addEventListener('scroll',()=>{if(window.scrollY>50){navbar.classList.add('scrolled')}else{navbar.classList.remove('scrolled')}});
+// Insight data with slug-based routing
+const insights = [
+{
+slug: "why-busy-teams-miss-targets",
+title: "Why Busy Teams Often Miss Their Targets",
+category: "Business Performance",
+readTime: "8 min read",
+date: "June 2026",
+content: `<p>At first glance, busy teams appear productive. Calendars are full, meetings are constant, and employees seem occupied throughout the day. Yet many organizations still struggle to achieve their most important goals. The problem is not usually a lack of effort. More often, it is a lack of alignment.</p><p>Teams miss targets when too much time is spent on activities that create movement but not meaningful progress. Meetings multiply, priorities shift, and urgent tasks consume attention while strategic objectives remain untouched.</p><p>Another common challenge is unclear ownership. When responsibilities are not clearly assigned, critical tasks can be delayed, duplicated, or overlooked entirely. Everyone is working, but no one is accountable for the outcome.</p><p>Many organizations also fall into the trap of measuring activity rather than results. Hours worked, emails sent, and meetings attended may indicate effort, but they do not necessarily indicate achievement.</p><p>High-performing teams operate differently. They understand what matters most, focus resources on key priorities, and maintain clear accountability for outcomes. Their success comes not from being busier, but from being more aligned.</p><p>Organizations rarely fail because people are not working hard enough. They fail when effort, priorities, and accountability are disconnected from the goals they are trying to achieve.</p><h3>Keynote Why Busy Teams Often Miss Their Targets</h3><p><b>The question leaders should ask is not, "Are we busy?" but rather, "Are we making progress toward what matters most?"</b></p>`
+},
+{
+slug: "hidden-costs-poor-hr-governance",
+title: "Hidden Costs of Poor HR Governance",
+category: "Human Resources",
+readTime: "10 min read",
+date: "May 2026",
+content: `<p>Many organizations associate HR governance with policies, procedures, and compliance requirements. As a result, it is often viewed as an administrative function rather than a strategic necessity.</p><p>However, weak HR governance carries costs that are not always immediately visible.</p><p>When roles, responsibilities, and decision-making processes are unclear, inconsistencies begin to emerge. Recruitment decisions become subjective, performance evaluations vary between managers, and employee issues are handled differently across teams. Over time, these inconsistencies create confusion, reduce trust, and increase organizational risk. Poor HR governance can also lead to higher employee turnover. Employees are more likely to disengage when they perceive unfair treatment, unclear expectations, or inconsistent application of policies. The cost of replacing talent often exceeds the investment required to establish proper governance in the first place.</p><p>Beyond people-related challenges, weak governance affects operational efficiency. Managers spend more time resolving recurring issues, addressing conflicts, and correcting preventable mistakes instead of focusing on growth and performance.</p><p>Strong HR governance is not about creating more bureaucracy. It is about establishing clarity, consistency, accountability, and fairness across the organization. The most significant costs of poor HR governance are often the ones that never appear on a financial report—lost trust, reduced engagement, increased risk, and missed opportunities for growth.</p><h3>Keynote Hidden Costs of Poor HR Governance</h3><p><b>Organizations grow stronger when people decisions are guided by clear principles, consistent processes, and accountable leadership.</b></p>`
+},
+{
+slug: "scaling-without-structure",
+title: "Scaling Without Structure",
+category: "Organizational Development",
+readTime: "7 min read",
+date: "May 2026",
+content: `<p>Growth is often seen as a sign of success. More customers, more employees, and expanding operations can create the impression that an organization is moving in the right direction.</p><p>However, growth without structure can quickly become a source of complexity and inefficiency. As organizations scale, informal ways of working that once seemed effective begin to break down. Communication becomes fragmented, decision-making slows, and responsibilities become increasingly unclear. What worked for a small team often struggles to support a larger and more complex organization.</p><p>Many companies respond to growth by adding more people. Yet without clear structures, defined roles, and consistent processes, additional headcount can create more confusion rather than better results.</p><p>A lack of structure often leads to duplicated efforts, inconsistent execution, and growing dependence on a few key individuals. As complexity increases, leaders spend more time solving operational issues instead of focusing on strategy and growth.</p><p>Sustainable growth requires more than ambition. It requires a foundation that enables people, processes, and decisions to work together effectively.</p><p>Structure should not be viewed as bureaucracy. When designed well, it creates clarity, improves accountability, and allows organizations to scale with greater consistency and confidence.</p><h3>keynote Scaling Without Structure</h3><p><b>Growth creates opportunity, but structure is what allows organizations to sustain it.</b></p>`
+},
+{
+slug: "sop-without-ownership",
+title: "SOP Without Ownership",
+category: "Governance",
+readTime: "6 min read",
+date: "April 2026",
+content: `<p>Many organizations invest significant time and effort in creating Standard Operating Procedures (SOPs). Documents are written, processes are mapped, and guidelines are distributed across teams.</p><p>Yet despite having well-documented procedures, execution often remains inconsistent. The reason is simple: a process without ownership rarely delivers the intended results.</p><p>When no individual or team is clearly responsible for maintaining, monitoring, and improving a process, SOPs gradually become outdated or ignored. Employees may follow different interpretations, exceptions become common, and process discipline begins to decline. Effective SOPs are not just documents. They require clear ownership, accountability, and continuous reinforcement.</p><p>Organizations achieve operational consistency not because procedures exist, but because someone is responsible for ensuring they are followed and improved over time.</p><h3>Keynote SOP Without Ownership</h3><p><b>Processes create consistency, but ownership ensures they work.</b></p>`
+},
+{
+slug: "cost-weak-accountability",
+title: "The Cost of Weak Accountability",
+category: "Compliance",
+readTime: "9 min read",
+date: "April 2026",
+content: `<p>Most organizations set goals, define strategies, and establish performance expectations. However, achieving results depends on more than planning—it depends on accountability.</p><p>When accountability is weak, important tasks are delayed, commitments are overlooked, and performance issues remain unresolved. Teams may stay busy, but progress becomes difficult to measure and sustain.</p><p>A lack of accountability often creates confusion about who owns specific outcomes. As responsibilities become blurred, problems are passed between departments, decisions are postponed, and execution slows down.</p><p>The cost extends beyond missed deadlines. Weak accountability reduces trust, lowers performance standards, and creates a culture where expectations are unclear.</p><p>High-performing organizations build accountability into their daily operations. They establish clear ownership, measurable expectations, and regular follow-through on commitments.</p><h3>Keynote The Cost of Weak Accountability</h3><p>Accountability is not about assigning blame. It is about creating clarity, ownership, and consistent execution.</p>`
+},
+{
+slug: "leadership-blind-spots",
+title: "Leadership Blind Spots",
+category: "Leadership",
+readTime: "8 min read",
+date: "March 2026",
+content: `<p>Leaders make decisions based on the information they can see. The challenge is that some of the most significant organizational risks are often hidden from view.</p><p>Leadership blind spots occur when critical issues remain unnoticed or underestimated. These may include declining employee engagement, communication breakdowns, unclear priorities, cultural challenges, or operational inefficiencies that develop gradually over time.</p><p>As organizations grow, leaders can become increasingly removed from day-to-day realities. Success, experience, and authority may unintentionally limit exposure to alternative perspectives or early warning signs.</p><p>The impact of blind spots is rarely immediate. Instead, small issues accumulate until they begin affecting performance, morale, and organizational effectiveness.</p><p>Strong leaders recognize that they do not have complete visibility. They actively seek feedback, encourage open communication, and create systems that surface problems before they become significant challenges.</p><h3>Keynote the Blind Spots</h3><p><b>The greatest leadership risk is not what leaders know—it is what they do not see.</b></p>`
+}
+];
 
-// Active nav link
-const sections=document.querySelectorAll('section[id]');
-const navItems=document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll',()=>{let current='';sections.forEach(s=>{if(scrollY>=s.offsetTop-200){current=s.getAttribute('id')}});navItems.forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+current){a.classList.add('active')}})});
+let currentPage = 'home';
 
-// Fade in animation
-const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible')}})},{threshold:0.1});
-document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+function init() {
+    handleRoute();
+    window.addEventListener('hashchange', handleRoute);
 
-// Modal functions
-function openModal(id){document.getElementById(id).classList.add('active');document.body.style.overflow='hidden'}
-function closeModal(e){if(e.target.classList.contains('modal-overlay')){e.target.classList.remove('active');document.body.style.overflow=''}}
-function closeModalDirect(id){document.getElementById(id).classList.remove('active');document.body.style.overflow=''}
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.active').forEach(m=>{m.classList.remove('active')});document.body.style.overflow=''}})
+    // Fade in animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Form handling with Formspree
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Active nav link
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(s => {
+            if (scrollY >= s.offsetTop - 200) {
+                current = s.getAttribute('id');
+            }
+        });
+        navItems.forEach(a => {
+            a.classList.remove('active');
+            if (a.getAttribute('href') === '#' + current) {
+                a.classList.add('active');
+            }
+        });
+    });
+
+    // Form handling
+    handleFormSubmit('resourceForm', 'formStatus', 'submitBtn');
+    handleFormSubmit('contactForm', 'contactFormStatus', 'contactSubmitBtn');
+}
+
+function handleRoute() {
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#/insight/')) {
+        const slug = hash.substring(10); // Remove '#/insight/'
+        const insight = insights.find(i => i.slug === slug);
+        if (insight) {
+            showInsightDetail(insight);
+        } else {
+            goHome();
+        }
+    } else {
+        showHome();
+    }
+}
+
+function showHome() {
+    document.getElementById('homePage').style.display = 'block';
+    document.getElementById('insightDetailPage').classList.remove('active');
+    document.body.style.overflow = 'auto';
+    document.title = 'Forisa Impact | HR, Legal & Governance Advisory';
+    currentPage = 'home';
+    window.scrollTo(0, 0);
+}
+
+function showInsightDetail(insight) {
+    document.getElementById('homePage').style.display = 'none';
+    document.getElementById('insightDetailPage').classList.add('active');
+    document.body.style.overflow = 'auto';
+
+    document.getElementById('detailCategory').textContent = insight.category;
+    document.getElementById('detailTitle').textContent = insight.title;
+    document.getElementById('detailReadTime').innerHTML = '<i class="far fa-clock"></i> ' + insight.readTime;
+    document.getElementById('detailDate').innerHTML = '<i class="far fa-calendar"></i> ' + insight.date;
+    document.getElementById('detailBody').innerHTML = insight.content;
+
+    document.title = insight.title + ' | Forisa Impact';
+    currentPage = 'insight';
+    window.scrollTo(0, 0);
+}
+
+function goHome() {
+    window.location.hash = '';
+    showHome();
+}
+
+function openInsight(slug) {
+    window.location.hash = '#/insight/' + slug;
+}
+
+function shareLinkedIn() {
+    const url = encodeURIComponent(window.location.href);
+    const title = encodeURIComponent(document.getElementById('detailTitle').textContent);
+    window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url + '&title=' + title, '_blank');
+}
+
+function shareWhatsApp() {
+    const url = encodeURIComponent(window.location.href);
+    const title = encodeURIComponent(document.getElementById('detailTitle').textContent);
+    window.open('https://wa.me/?text=' + title + '%20' + url, '_blank');
+}
+
+function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('Link berhasil disalin!');
+    });
+}
+
 function handleFormSubmit(formId, statusId, btnId) {
     const form = document.getElementById(formId);
     const status = document.getElementById(statusId);
     const btn = document.getElementById(btnId);
-
     if (!form) return;
-
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
-
         btn.disabled = true;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
-
         try {
             const response = await fetch(form.action, {
                 method: 'POST',
                 body: new FormData(form),
-                headers: {
-                    'Accept': 'application/json'
-                }
+                headers: { 'Accept': 'application/json' }
             });
-
             if (response.ok) {
                 status.className = 'form-status success show';
-                status.textContent = '✅ Pesan berhasil terkirim! Kami akan menghubungi Anda segera.';
+                status.textContent = 'Pesan berhasil terkirim! Kami akan menghubungi Anda segera.';
                 form.reset();
             } else {
                 throw new Error('Form submission failed');
             }
         } catch (error) {
             status.className = 'form-status error show';
-            status.textContent = '❌ Terjadi kesalahan. Silakan hubungi kami langsung via WhatsApp atau Email.';
+            status.textContent = 'Terjadi kesalahan. Silakan hubungi kami langsung via WhatsApp atau Email.';
         } finally {
             btn.disabled = false;
             btn.innerHTML = formId === 'resourceForm' ? 'Get Access to Resources' : 'Send Message';
@@ -981,9 +1012,13 @@ function handleFormSubmit(formId, statusId, btnId) {
     });
 }
 
-// Initialize forms
-handleFormSubmit('resourceForm', 'formStatus', 'submitBtn');
-handleFormSubmit('contactForm', 'contactFormStatus', 'contactSubmitBtn');
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && currentPage === 'insight') {
+        goHome();
+    }
+});
+
+document.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
 </html>
